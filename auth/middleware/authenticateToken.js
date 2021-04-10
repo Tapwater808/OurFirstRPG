@@ -8,11 +8,11 @@ module.exports = (req, res, next) => {
   // console.log(JSON.stringify(req.cookies));
   const accessToken = req.cookies.access_token;
   const token = accessToken && accessToken.split(' ')[1];
-  if (!token) res.redirect('/error');
+  if (!token) res.json({error: "No token found"});
 
   jwt.verify(token, privateKey, async (err, user) => {
     if (err) return res.status(401).end();
-    req.user = await db.User.findOne({ where: { username: user.username } });
+    req.user = await db.User.findOne({ username: user.username });
     next();
   });
 };
