@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 
-const Engine = () => {
+const AuthTest = () => {
   const [files, setFiles] = useState();
   useEffect(()=> {
     fetch('/getSaveFiles', {
       method: 'POST'
-    }).then(response => {
-      if (response.error) {
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
         console.log("REDIRECTING...");
-        setTimeout(() => window.location.replace(__dirname + '/login'), 1000);
+        setTimeout(() => window.location.replace('/login'), 1000);
       } 
-      response.files ? setFiles(response.files) : setFiles({});
+      data.files ? setFiles(data.files) : setFiles({});
     });
 
   },[])
@@ -19,4 +21,4 @@ const Engine = () => {
   );
 }
 
-export default Engine;
+export default AuthTest;
