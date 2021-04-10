@@ -1,4 +1,4 @@
-import Sprite from "./components/Sprites/index";
+import Sprite from "../components/Sprites";
 
 const Engine = () => {
   return (
