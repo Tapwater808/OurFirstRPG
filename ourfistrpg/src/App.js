@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Sprite from "./components/Sprites/index";
 function App() {
   return (
     <div className="App">
+      <Sprite></Sprite>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

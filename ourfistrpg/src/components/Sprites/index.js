@@ -1,15 +1,16 @@
 import React from "react"
 
-export default function Sprite() {
-return <div>
+export default function Sprite({ image, data }) {
+    const { y, x, h, w } = data
+return <div
     style={{
         display: "inline-block",
-        height: "32px",
-        width: "32px",
-        backgroundImage: "../Assets/Player.png",
+        height: `${h}px`,
+        width: `${w}px`,
+        backgroundImage: `url(${image})`,
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "0px 0px"
-    }}
+        backgroundPosition: `-${x}px -${y}px`
+    }}>
     </div>
 
 }
