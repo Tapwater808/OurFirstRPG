@@ -1,18 +1,26 @@
-import React from "react";
-import Sprite from "./Sprites/index"
+import Sprite from '../Sprite';
+import { DOWN } from './vars/directions';
 
-export default function Actor({sprite, data, step = 0, dir =0 }){
-    return(
-        <div className="zone-container">
-            <Sprite 
-            image={sprite}
-            data= {{
-                x: step * w,
-                y: dir * h,
-                w: 32,
-                h: 32,
-            }}
-            />
-        </div>
-    )
+const Actor = ({
+  image,
+  size={width: 32, height: 32},
+  position={x: 0, y: 0},
+  step = 0,
+  dir=DOWN
+}) => {
+  const {width, height} = size;
+  return (
+    <Sprite
+      image = {image}
+      position={position}
+      status = {{
+        x: step*width,
+        y: dir*height,
+        width: width,
+        height: height
+      }}
+    />
+  )
 }
+
+export default Actor;
