@@ -3,9 +3,11 @@ import Actor from '../Actor';
 import useKeydown from '../../hooks/useKeydown';
 import useWalk from '../Actor/actions/useWalk';
 import directions from '../Actor/vars/directions';
+import {UNIT as unit} from '../Map/vars/mapSize';
+
 const Player = ({initPos, map}) => {
-  const charSize = { width: 2, height: 2 };
-  const {position, size, step, dir, walk} = useWalk(initPos, map, charSize);
+  const size = { width: 32/unit, height: 32/unit };
+  const {position, step, dir, walk} = useWalk(initPos, map, size);
   
   useKeydown((e) => {
     const dir = e.key.replace('Arrow', '').toUpperCase();
