@@ -13,4 +13,7 @@ body {
     font-size: 1rem;
     position: relative;
     overflow: hidden;
+    background-image: url(../../components/Map/images/Illustration.png);
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
   }
