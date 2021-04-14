@@ -1,0 +1,21 @@
+.DialogWindow {
+    background-color: white;
+    border: solid;
+    padding: 15px;
+    width: 50%;
+    margin: auto;
+}
+
+.DialogTitle {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.DialogFooter {
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    text-align: end;
+    font-weight: bold;
+}
