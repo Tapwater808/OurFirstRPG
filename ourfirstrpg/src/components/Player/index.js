@@ -3,9 +3,17 @@ import Actor from '../Actor';
 import useKeydown from '../../hooks/useKeydown';
 import useWalk from '../Actor/actions/useWalk';
 import directions from '../Actor/vars/directions';
+import {UNIT as unit} from '../Map/vars/mapSize';
 const Player = ({initPos, map}) => {
-  const charSize = { width: 2, height: 2 };
-  const {position, size, step, dir, walk} = useWalk(initPos, map, charSize);
+  const charSize = { width: 32, height: 32 };
+  const {position, step, dir, walk} = useWalk(
+    initPos,
+    map,
+    {
+      width: parseInt(charSize.width/unit),
+      height: parseInt(charSize.height/unit)
+    }
+  );
   
   useKeydown((e) => {
     const dir = e.key.replace('Arrow', '').toUpperCase();
@@ -18,7 +26,7 @@ const Player = ({initPos, map}) => {
     <Actor
       image='url(/m1.png)'
       position={position}
-      size={size}
+      size={charSize}
       step={step}
       dir={dir}
     />
