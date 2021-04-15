@@ -17,3 +17,10 @@ body {
     background-repeat: no-repeat;
     background-position: 0px 0px;
   }
+/* 
+  .view-container {
+    box-sizing: border-box;
+    border: 4px solid white;
+    margin: auto;
+    position: absolute;
+  } */

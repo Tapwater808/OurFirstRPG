@@ -24,7 +24,7 @@ const Player = ({initPos, map}) => {
 
   return (
     <Actor
-      image='url(/m1.png)'
+      image='url(./Assets/Player.png)'
       position={position}
       size={charSize}
       step={step}

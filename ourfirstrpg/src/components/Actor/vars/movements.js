@@ -1,5 +1,4 @@
 import {UNIT} from '../../Map/vars/mapSize';
-
 export const stepSize = UNIT;
 
 const movements = {
