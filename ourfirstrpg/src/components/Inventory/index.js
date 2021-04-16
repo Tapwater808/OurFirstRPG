@@ -22,8 +22,8 @@ export default function Inventory() {
                     <MenuItem>+5 def</MenuItem>
                 </SubMenu>
                 <SubMenu label="Steak">
-                    <MenuItem>A hearty chunk of meat for when youre hunger cannot be satied
-                    but with the flesh of another</MenuItem>
+                    <MenuItem>A hearty chunk of meat for when your hunger cannot be satied
+                    except with the flesh of another</MenuItem>
                     <MenuItem>+100 hp</MenuItem>
                     <MenuItem>+25 def</MenuItem>
                     <MenuItem>-15 spd</MenuItem>
