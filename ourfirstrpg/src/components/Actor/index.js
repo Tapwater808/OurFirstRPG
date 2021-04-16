@@ -9,6 +9,21 @@ const Actor = ({
   dir=DOWN
 }) => {
   const {width, height} = size;
+  const info = {
+    image,
+    position,
+    status: {
+      x: step*width,
+      y: dir*height,
+      width: width,
+      height: height
+    }
+  };
+  console.log('Actor info:', info);
+  console.log('width: ', width);
+  console.log('height: ', height);
+  console.log('step: ', step);
+  console.log('dir: ', dir);
   return (
     <Sprite
       image = {image}
