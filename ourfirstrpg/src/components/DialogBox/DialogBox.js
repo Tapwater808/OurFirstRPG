@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import ReactDOM from 'react-dom';
 
 import "../DialogBox/dialogBox.css"
 
@@ -14,18 +15,28 @@ const DialogBox = () => {
         if (currentMessage < messages.length - 1) {
             setCurrentMessage(currentMessage + 1);
         } else {
-            setCurrentMessage(0);
+            setIsVisible(false);
+            setCurrentMessage(0)
         }
     };
 
+    const [isVisible, setIsVisible] = React.useState(false)
+    const onClick = () => setIsVisible(true)
+
     return (
-        <div className="DialogWindow">
+        <>
+        <button className="DialogButton" onClick={onClick}>Show Dialog</button>
+
+        <div className="container">
+        </div>
+        <div className={ isVisible ? 'DialogWindow2' : 'DialogWindow'}>
             <div className="DialogTitle">Beans</div>
             <div className="DialogText">{messages[currentMessage]}</div>
             <div onClick={handleClick} className="DialogFooter">
                 --{`>`}
             </div>
         </div>
+        </>
     );
 };
 

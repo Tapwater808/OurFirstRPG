@@ -5,6 +5,8 @@ import Main from '../../components/Menu';
 import Inventory from '../../components/Inventory';
 // import Guy1 from '../../components/Npc/Guy1/Guy1'
 
+import DialogBox from '../../components/DialogBox/DialogBox'
+
 const Engine = () => {
   const startingMap = Map();
   const menu = Main();
@@ -15,6 +17,7 @@ const Engine = () => {
       <Main menu={menu}/>
       <Inventory invent={inventory}/>
       {/* <Guy1 initPos={{x: 5, y: 5}} map={startingMap} /> */}
+      <DialogBox />
     </div>
   );
 }
