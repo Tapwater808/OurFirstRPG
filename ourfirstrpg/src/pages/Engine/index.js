@@ -10,6 +10,8 @@ import useWalk from '../../components/Actor/actions/useWalk';
 import directions from '../../components/Actor/vars/directions';
 import {UNIT as unit} from '../../components/Map/vars/mapSize';
 
+import DialogBox from '../../components/DialogBox/DialogBox'
+
 const Engine = () => {
   const map = Map();
   const menu = Main();
@@ -56,6 +58,8 @@ const Engine = () => {
       {/* <Guy1 initPos={{x: 6, y: 6}} map={map} playerLocation={playerPos}/> */}
       <Main menu={menu}/>
       <Inventory invent={inventory}/>
+      {/* <Guy1 initPos={{x: 5, y: 5}} map={startingMap} /> */}
+      <DialogBox />
     </div>
   );
 }
