@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 import "../DialogBox/dialogBox.css"
 
+const name = "Buckaroo";
+
 const messages = [
     "This is a test",
     "Dammit",
@@ -30,7 +32,7 @@ const DialogBox = () => {
         <div className="container">
         </div>
         <div className={ isVisible ? 'DialogWindow2' : 'DialogWindow'}>
-            <div className="DialogTitle">Beans</div>
+            <div className="DialogTitle">{name}</div>
             <div className="DialogText">{messages[currentMessage]}</div>
             <div onClick={handleClick} className="DialogFooter">
                 --{`>`}
