@@ -19,10 +19,15 @@ const useWalk = (initPos={ x:0, y:0 }, map, charSize) => {
         x: mapSize.x - 1 - charSize.width,
         y: mapSize.y - 1 - charSize.height
       }
+      // console.log(`useWalk:\n  next: ${JSON.stringify(next)}`);
+      // console.log(`useWalk:\n  offset: ${JSON.stringify(offset)}`);
+      
       const isBoundary = next.x < 0 || next.x > offset.x || next.y < 0 || next.y > offset.y;
       if (isBoundary) return prev;
       
       const isWall = map[next.y][next.x] === 1;
+      console.log(`useWalk:\n  isBoundary: ${isBoundary}`);
+      console.log(`useWalk:\n  isWall: ${isWall}`);
       return isWall ? prev: next
     });
   }
@@ -39,10 +44,6 @@ const useWalk = (initPos={ x:0, y:0 }, map, charSize) => {
     position: {
       x: position.x * stepSize,
       y: position.y * stepSize,
-    },
-    size: {
-      width: charSize.width * stepSize,
-      height: charSize.height * stepSize
     },
     step,
     dir,
