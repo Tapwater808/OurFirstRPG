@@ -1,4 +1,5 @@
-export const stepSize = 16;
+import {UNIT} from '../../Map/vars/mapSize';
+export const stepSize = UNIT;
 
 const movements = {
   DOWN: { x: 0, y: 1},
