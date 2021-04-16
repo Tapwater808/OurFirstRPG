@@ -4,6 +4,19 @@
     padding: 15px;
     width: 50%;
     margin: auto;
+    display: none;
+}
+
+.DialogWindow2 {
+    background-color: white;
+    border: solid;
+    padding: 15px;
+    width: 50%;
+    margin: auto;
+}
+
+.visibility {
+    display: none;
 }
 
 .DialogTitle {
