@@ -8,7 +8,7 @@ const Engine = () => {
   return (
     <div className="zone-container">
       <Player initPos={{x: 2, y: 0}} map={startingMap}/>
-      {/* <Guy1 initPos={{x: 5, y: 5}} map={startingMap} /> */}
+      <Guy1 initPos={{x: 6, y: 6}} map={startingMap} />
     </div>
   );
 }
