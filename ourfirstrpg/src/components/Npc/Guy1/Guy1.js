@@ -1,16 +1,15 @@
 import Actor from '../../Actor';
-import useWalk from '../../Actor/actions/useWalk';
 import directions from '../../Actor/vars/directions';
-const Guy1 = ({initPos, map}) => {
-    const charSize = { width: 2, height: 2 };
-    const {position, size, step, dir, walk} = useWalk(initPos, map, charSize);
+
+const Guy1 = ({position}) => {
+    const charSize = { width: 4, height: 4 };
     return (
       <Actor
         image='url(./Assets/BadGuy1.png)'
         position={position}
-        size={size}
-        step={step}
-        dir={dir}
+        size={charSize}
+        step={0}
+        dir={directions.DOWN}
       />
     );
   }
