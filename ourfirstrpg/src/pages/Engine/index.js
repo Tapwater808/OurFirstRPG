@@ -2,7 +2,7 @@ import './index.css';
 import Player from '../../components/Player';
 import Main from '../../components/Menu';
 import Inventory from '../../components/Inventory';
-import Guy1 from '../../components/Npc/Guy1/Guy1'
+import Guy1 from '../../components/Npc/Guy1/Guy1';
 import {useRef, useState} from 'react';
 import useKeydown from '../../hooks/useKeydown';
 import useWalk from '../../components/Actor/actions/useWalk';
