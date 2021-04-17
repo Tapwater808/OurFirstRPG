@@ -1,29 +1,38 @@
+// CSS Stylesheet
 import './index.css';
+// Components
 import Player from '../../components/Player';
 import Main from '../../components/Menu';
 import Inventory from '../../components/Inventory';
-import Guy1 from '../../components/Npc/Guy1/Guy1';
-import {useState} from 'react';
+import DialogBox from '../../components/DialogBox/DialogBox';
+import Npc from '../../components/Npc';
+// Hooks
+import {useRef, useState} from 'react';
 import useKeydown from '../../hooks/useKeydown';
 import useWalk from '../../components/Actor/actions/useWalk';
-import directions from '../../components/Actor/vars/directions';
 import useMap from '../../components/Map/hooks/useMap';
-import DialogBox from '../../components/DialogBox/DialogBox';
+// Variables
+import directions from '../../components/Actor/vars/directions';
+import spawn from '../../components/Npc/vars/spawn';
+// Util Functions
 import isObstacle from '../../components/Map/utils/isObstacle';
 import findNpc from '../../components/Npc/utils/findNpc';
-import { NAME, MESSAGES } from '../../components/Npc/Guy1/Guy1';
 
 const Engine = () => {
   const menu = Main();
   const inventory = Inventory();
 
   const initMap = 'village';
-  const [mapName, map, updateMap] = useMap(initMap)
+  const [mapName, map, updateMap] = useMap(initMap);
+  const npcs = spawn[mapName];
   
   const [playerPos, setPlayerPos] = useState({x: 10, y: 10});
-  const [interactable, setInteractable] = useState();
+  const [talkableNPC, setTalkableNPC] = useState();
 
-  const [currentMessage, setCurrentMessage] = useState(0);
+  const messageIndex = useRef(-1);
+  const [message, setMessage] = useState('');
+  const [speaker, setSpeaker] = useState('');
+  
   const [dialogVisibility, setDialogVisibility] = useState(false);
   const playerSize = {width: 4, height: 4};
 
@@ -31,7 +40,7 @@ const Engine = () => {
     const [dir, pos] = getUpdate(playerPos);
     setPlayerPos(pos);
     const found = findNpc(mapName, pos, dir, playerSize);
-    setInteractable(found);
+    setTalkableNPC(found);
   }
 
   const {gesture, dir, walk} = useWalk(
@@ -39,26 +48,28 @@ const Engine = () => {
     (next) => {
       return isObstacle(map, next, playerSize)
     },
-    (dir, pos) => {}
   );
   
-  const handleHello = () => {
-    const advance = () => {
-      if (currentMessage < 2) {
-        setCurrentMessage(currentMessage + 1);
+  const handleInteraction = () => {
+    if (talkableNPC) {
+      if (!dialogVisibility) {
+        setDialogVisibility(true);
+        setSpeaker(talkableNPC.name);
+      }
+      if (messageIndex.current < talkableNPC.dialog.length - 1) {
+        setMessage(talkableNPC.dialog[messageIndex.current + 1]);
+        messageIndex.current = messageIndex.current + 1;
       } else {
         setDialogVisibility(false);
-        setCurrentMessage(0)
+        setMessage('');
+        setSpeaker('');
+        messageIndex.current = -1;
       }
     }
-    if (!dialogVisibility)  
-      return setDialogVisibility(true)
-    
-    advance();
   }
   
   useKeydown((e) => {
-    if (e.code === "KeyE") handleHello();
+    if (e.code === "KeyE") handleInteraction();
     const facing = e.key.replace('Arrow', '').toUpperCase();
     if (!directions.hasOwnProperty(facing)) return;
     e.preventDefault();
@@ -73,16 +84,22 @@ const Engine = () => {
         gesture={gesture}
         dir={dir}
       />
-      <Guy1 position={{x: 12, y: 16}}/>
+      {
+        Object.entries(npcs).map(([key, {sprite, location, size}]) =>
+          <Npc
+            key={key}
+            sprite={sprite.avatar}
+            position={location}
+            size={sprite.size}
+          />
+        )
+      }
       <Main menu={menu}/>
       <Inventory invent={inventory}/>
       <DialogBox
         isVisible={dialogVisibility}
-        setIsVisible={setDialogVisibility}
-        currentMessage={currentMessage}
-        setCurrentMessage={setCurrentMessage}
-        name={NAME}
-        messages={MESSAGES}
+        name={speaker}
+        message={message}
       />
     </div>
   );

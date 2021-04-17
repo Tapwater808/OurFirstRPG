@@ -1,7 +1,7 @@
 const config = {
   BadGuy1: {
     avatar: 'BadGuy1',
-    size: {width: 32, height: 32}
+    size: {width: 4, height: 4}
   }
 }
 
