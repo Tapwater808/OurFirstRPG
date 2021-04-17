@@ -14,3 +14,11 @@ const Guy1 = ({position}) => {
     );
   }
   export default Guy1;
+
+  export const NAME = 'Guy1/Wife idk'
+
+  export const MESSAGES = [
+    'This is a new test',
+    'I am your wife',
+    'Make me a sandwich, please :)'
+  ];

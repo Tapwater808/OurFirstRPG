@@ -1,18 +1,20 @@
-import "../DialogBox/dialogBox.css"
+import '../DialogBox/dialogBox.css'
 
-const name = "Buckaroo";
+// const name = 'Buckaroo';
 
-const messages = [
-    "This is a test",
-    "Dammit",
-    "I've been banned from Dave & Busters"
-];
+// const messages = [
+//     'This is a test',
+//     'Dammit',
+//     "I've been banned from Dave & Busters"
+// ];
 
 const DialogBox = ({
     isVisible,
     setIsVisible,
     currentMessage,
-    setCurrentMessage
+    setCurrentMessage,
+    name,
+    messages
 }) => {
     const handleClick = () => {
         if (currentMessage < messages.length - 1) {
@@ -27,14 +29,14 @@ const DialogBox = ({
 
     return (
         <>
-        <button className="DialogButton" onClick={onClick}>Show Dialog</button>
+        <button className='DialogButton' onClick={onClick}>Show Dialog</button>
 
-        <div className="container">
+        <div className='container'>
         </div>
         <div className={ isVisible ? 'DialogWindow2' : 'DialogWindow'}>
-            <div className="DialogTitle">{name}</div>
-            <div className="DialogText">{messages[currentMessage]}</div>
-            <div onClick={handleClick} className="DialogFooter">
+            <div className='DialogTitle'>{name}</div>
+            <div className='DialogText'>{messages[currentMessage]}</div>
+            <div onClick={handleClick} className='DialogFooter'>
                 --{`>`}
             </div>
         </div>
