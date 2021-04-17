@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-// import ReactDOM from 'react-dom';
-
 import "../DialogBox/dialogBox.css"
 
 const name = "Buckaroo";
@@ -11,8 +8,12 @@ const messages = [
     "I've been banned from Dave & Busters"
 ];
 
-const DialogBox = () => {
-    const [currentMessage, setCurrentMessage] = useState(0);
+const DialogBox = ({
+    isVisible,
+    setIsVisible,
+    currentMessage,
+    setCurrentMessage
+}) => {
     const handleClick = () => {
         if (currentMessage < messages.length - 1) {
             setCurrentMessage(currentMessage + 1);
@@ -22,7 +23,6 @@ const DialogBox = () => {
         }
     };
 
-    const [isVisible, setIsVisible] = React.useState(false)
     const onClick = () => setIsVisible(true)
 
     return (
