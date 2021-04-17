@@ -2,7 +2,7 @@ import './index.css';
 import Player from '../../components/Player';
 import Main from '../../components/Menu';
 import Inventory from '../../components/Inventory';
-import Guy1 from '../../components/Npc/Guy1/Guy1'
+import Guy1 from '../../components/Npc/Guy1/Guy1';
 import {useState} from 'react';
 import useKeydown from '../../hooks/useKeydown';
 import useWalk from '../../components/Actor/actions/useWalk';
@@ -11,6 +11,7 @@ import useMap from '../../components/Map/hooks/useMap';
 import DialogBox from '../../components/DialogBox/DialogBox';
 import isObstacle from '../../components/Map/utils/isObstacle';
 import findNpc from '../../components/Npc/utils/findNpc';
+import { NAME, MESSAGES } from '../../components/Npc/Guy1/Guy1';
 
 const Engine = () => {
   const menu = Main();
@@ -80,6 +81,8 @@ const Engine = () => {
         setIsVisible={setDialogVisibility}
         currentMessage={currentMessage}
         setCurrentMessage={setCurrentMessage}
+        name={NAME}
+        messages={MESSAGES}
       />
     </div>
   );
