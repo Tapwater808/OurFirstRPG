@@ -24,6 +24,7 @@ const Engine = () => {
 
   const messageIndex = useRef(-1);
   const [message, setMessage] = useState('');
+  const [speaker, setSpeaker] = useState('');
   
   const [dialogVisibility, setDialogVisibility] = useState(false);
   const playerSize = {width: 4, height: 4};
@@ -44,13 +45,17 @@ const Engine = () => {
   
   const handleInteraction = () => {
     if (talkableNPC) {
-      if (!dialogVisibility) setDialogVisibility(true);
+      if (!dialogVisibility) {
+        setDialogVisibility(true);
+        setSpeaker(talkableNPC.name);
+      }
       if (messageIndex.current < talkableNPC.dialog.length - 1) {
         setMessage(talkableNPC.dialog[messageIndex.current + 1]);
         messageIndex.current = messageIndex.current + 1;
       } else {
         setDialogVisibility(false);
         setMessage('');
+        setSpeaker('');
         messageIndex.current = -1;
       }
     }
@@ -75,7 +80,7 @@ const Engine = () => {
       <Guy1 position={{x: 12, y: 16}}/>
       <Main menu={menu}/>
       <Inventory invent={inventory}/>
-      <DialogBox isVisible={dialogVisibility} message={message} />
+      <DialogBox isVisible={dialogVisibility} name={speaker} message={message} />
     </div>
   );
 }
