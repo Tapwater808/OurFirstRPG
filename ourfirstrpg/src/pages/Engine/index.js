@@ -3,7 +3,7 @@ import Player from '../../components/Player';
 import Main from '../../components/Menu';
 import Inventory from '../../components/Inventory';
 import Guy1 from '../../components/Npc/Guy1/Guy1'
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import useKeydown from '../../hooks/useKeydown';
 import useWalk from '../../components/Actor/actions/useWalk';
 import directions from '../../components/Actor/vars/directions';
@@ -20,9 +20,11 @@ const Engine = () => {
   const [mapName, map, updateMap] = useMap(initMap)
   
   const [playerPos, setPlayerPos] = useState({x: 10, y: 10});
-  const [interactable, setInteractable] = useState();
+  const [talkableNPC, setTalkableNPC] = useState();
 
-  const [currentMessage, setCurrentMessage] = useState(0);
+  const messageIndex = useRef(-1);
+  const [message, setMessage] = useState('');
+  
   const [dialogVisibility, setDialogVisibility] = useState(false);
   const playerSize = {width: 4, height: 4};
 
@@ -30,7 +32,7 @@ const Engine = () => {
     const [dir, pos] = getUpdate(playerPos);
     setPlayerPos(pos);
     const found = findNpc(mapName, pos, dir, playerSize);
-    setInteractable(found);
+    setTalkableNPC(found);
   }
 
   const {gesture, dir, walk} = useWalk(
@@ -38,26 +40,24 @@ const Engine = () => {
     (next) => {
       return isObstacle(map, next, playerSize)
     },
-    (dir, pos) => {}
   );
   
-  const handleHello = () => {
-    const advance = () => {
-      if (currentMessage < 2) {
-        setCurrentMessage(currentMessage + 1);
+  const handleInteraction = () => {
+    if (talkableNPC) {
+      if (!dialogVisibility) setDialogVisibility(true);
+      if (messageIndex.current < talkableNPC.dialog.length - 1) {
+        setMessage(talkableNPC.dialog[messageIndex.current + 1]);
+        messageIndex.current = messageIndex.current + 1;
       } else {
         setDialogVisibility(false);
-        setCurrentMessage(0)
+        setMessage('');
+        messageIndex.current = -1;
       }
     }
-    if (!dialogVisibility)  
-      return setDialogVisibility(true)
-    
-    advance();
   }
   
   useKeydown((e) => {
-    if (e.code === "KeyE") handleHello();
+    if (e.code === "KeyE") handleInteraction();
     const facing = e.key.replace('Arrow', '').toUpperCase();
     if (!directions.hasOwnProperty(facing)) return;
     e.preventDefault();
@@ -75,12 +75,7 @@ const Engine = () => {
       <Guy1 position={{x: 12, y: 16}}/>
       <Main menu={menu}/>
       <Inventory invent={inventory}/>
-      <DialogBox
-        isVisible={dialogVisibility}
-        setIsVisible={setDialogVisibility}
-        currentMessage={currentMessage}
-        setCurrentMessage={setCurrentMessage}
-      />
+      <DialogBox isVisible={dialogVisibility} message={message} />
     </div>
   );
 }
