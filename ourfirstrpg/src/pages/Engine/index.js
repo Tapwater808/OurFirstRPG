@@ -1,14 +1,20 @@
+// CSS Stylesheet
 import './index.css';
+// Components
 import Player from '../../components/Player';
 import Main from '../../components/Menu';
 import Inventory from '../../components/Inventory';
-import Guy1 from '../../components/Npc/Guy1/Guy1';
+import DialogBox from '../../components/DialogBox/DialogBox';
+import Npc from '../../components/Npc';
+// Hooks
 import {useRef, useState} from 'react';
 import useKeydown from '../../hooks/useKeydown';
 import useWalk from '../../components/Actor/actions/useWalk';
-import directions from '../../components/Actor/vars/directions';
 import useMap from '../../components/Map/hooks/useMap';
-import DialogBox from '../../components/DialogBox/DialogBox';
+// Variables
+import directions from '../../components/Actor/vars/directions';
+import spawn from '../../components/Npc/vars/spawn';
+// Util Functions
 import isObstacle from '../../components/Map/utils/isObstacle';
 import findNpc from '../../components/Npc/utils/findNpc';
 
@@ -17,7 +23,8 @@ const Engine = () => {
   const inventory = Inventory();
 
   const initMap = 'village';
-  const [mapName, map, updateMap] = useMap(initMap)
+  const [mapName, map, updateMap] = useMap(initMap);
+  const npcs = spawn[mapName];
   
   const [playerPos, setPlayerPos] = useState({x: 10, y: 10});
   const [talkableNPC, setTalkableNPC] = useState();
@@ -77,10 +84,23 @@ const Engine = () => {
         gesture={gesture}
         dir={dir}
       />
-      <Guy1 position={{x: 12, y: 16}}/>
+      {
+        Object.entries(npcs).map(([key, {sprite, location, size}]) =>
+          <Npc
+            key={key}
+            sprite={sprite.avatar}
+            position={location}
+            size={sprite.size}
+          />
+        )
+      }
       <Main menu={menu}/>
       <Inventory invent={inventory}/>
-      <DialogBox isVisible={dialogVisibility} name={speaker} message={message} />
+      <DialogBox
+        isVisible={dialogVisibility}
+        name={speaker}
+        message={message}
+      />
     </div>
   );
 }
