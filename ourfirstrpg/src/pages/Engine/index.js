@@ -1,6 +1,5 @@
 import './index.css';
 import Player from '../../components/Player';
-import Map from '../../components/Map';
 import Main from '../../components/Menu';
 import Inventory from '../../components/Inventory';
 import Guy1 from '../../components/Npc/Guy1/Guy1'
@@ -8,35 +7,53 @@ import {useState} from 'react';
 import useKeydown from '../../hooks/useKeydown';
 import useWalk from '../../components/Actor/actions/useWalk';
 import directions from '../../components/Actor/vars/directions';
-import {UNIT as unit} from '../../components/Map/vars/mapSize';
-
-import DialogBox from '../../components/DialogBox/DialogBox'
+import useMap from '../../components/Map/hooks/useMap';
+import DialogBox from '../../components/DialogBox/DialogBox';
+import isObstacle from '../../components/Map/utils/isObstacle';
+import findNpc from '../../components/Npc/utils/findNpc';
 
 const Engine = () => {
-  const map = Map();
   const menu = Main();
   const inventory = Inventory();
+
+  const initMap = 'village';
+  const [mapName, map, updateMap] = useMap(initMap)
+  
   const [playerPos, setPlayerPos] = useState({x: 10, y: 10});
-  const playerSize = {width: 32, height: 32};
+  const [interactable, setInteractable] = useState();
+
+  const [currentMessage, setCurrentMessage] = useState(0);
+  const [dialogVisibility, setDialogVisibility] = useState(false);
+  const playerSize = {width: 4, height: 4};
+
+  const update = (getUpdate) => {
+    const [dir, pos] = getUpdate(playerPos);
+    setPlayerPos(pos);
+    const found = findNpc(mapName, pos, dir, playerSize);
+    setInteractable(found);
+  }
+
   const {gesture, dir, walk} = useWalk(
-    map,
-    setPlayerPos,
-    {
-      x: playerSize.width/unit,
-      y: playerSize.height/unit
-    }
+    update,
+    (next) => {
+      return isObstacle(map, next, playerSize)
+    },
+    (dir, pos) => {}
   );
   
   const handleHello = () => {
-    console.log("position", playerPos);
-    if (
-        (playerPos.x > 50 && playerPos.x < 60) &&
-        (playerPos.y > 110 && playerPos.y < 120) 
-     ) {
-      console.log('hello');
-    } else{
-      console.log('Sorry you are not close enough');
+    const advance = () => {
+      if (currentMessage < 2) {
+        setCurrentMessage(currentMessage + 1);
+      } else {
+        setDialogVisibility(false);
+        setCurrentMessage(0)
+      }
     }
+    if (!dialogVisibility)  
+      return setDialogVisibility(true)
+    
+    advance();
   }
   
   useKeydown((e) => {
@@ -55,11 +72,15 @@ const Engine = () => {
         gesture={gesture}
         dir={dir}
       />
-      {/* <Guy1 initPos={{x: 6, y: 6}} map={map} playerLocation={playerPos}/> */}
+      <Guy1 position={{x: 12, y: 16}}/>
       <Main menu={menu}/>
       <Inventory invent={inventory}/>
-      {/* <Guy1 initPos={{x: 5, y: 5}} map={startingMap} /> */}
-      <DialogBox />
+      <DialogBox
+        isVisible={dialogVisibility}
+        setIsVisible={setDialogVisibility}
+        currentMessage={currentMessage}
+        setCurrentMessage={setCurrentMessage}
+      />
     </div>
   );
 }
