@@ -16,7 +16,7 @@ import directions from '../../components/Actor/vars/directions';
 import spawn from '../../components/Npc/vars/spawn';
 // Util Functions
 import isObstacle from '../../components/Map/utils/isObstacle';
-import findNpc from '../../components/Npc/utils/findNpc';
+import findInteractable from '../../components/Map/utils/findInteractable';
 
 const Engine = () => {
   const menu = Main();
@@ -26,66 +26,68 @@ const Engine = () => {
   const [mapName, map, updateMap] = useMap(initMap);
   const npcs = spawn[mapName];
   
-  const [playerPos, setPlayerPos] = useState({x: 10, y: 10});
-  const [talkableNPC, setTalkableNPC] = useState();
+  const [playerLocation, setPlayerLoc] = useState({x: 10, y: 10});
+  const [interactable, setInteractable] = useState(null);
 
-  const messageIndex = useRef(-1);
-  const [message, setMessage] = useState('');
+  const msgIndex = useRef(-1);
+  const [message, setMsg] = useState('');
   const [speaker, setSpeaker] = useState('');
   
   const [dialogVisibility, setDialogVisibility] = useState(false);
   const playerSize = {width: 4, height: 4};
 
   const update = (getUpdate) => {
-    const [dir, pos] = getUpdate(playerPos);
-    setPlayerPos(pos);
-    const found = findNpc(mapName, pos, dir, playerSize);
-    setTalkableNPC(found);
+    const [dir, loc] = getUpdate(playerLocation);
+    setPlayerLoc(loc);
+    const found = findInteractable(mapName, map, loc, dir, playerSize);
+    setInteractable(found);
+    // console.log('Found', found);
   }
 
-  const {gesture, dir, walk} = useWalk(
+  const [gesture, dir, walk] = useWalk(
     update,
-    (next) => {
-      return isObstacle(map, next, playerSize)
-    },
+    (next) => isObstacle(map, next, playerSize),
   );
   
   const handleInteraction = () => {
-    if (talkableNPC) {
-      if (!dialogVisibility) {
-        setDialogVisibility(true);
-        setSpeaker(talkableNPC.name);
-      }
-      if (messageIndex.current < talkableNPC.dialog.length - 1) {
-        setMessage(talkableNPC.dialog[messageIndex.current + 1]);
-        messageIndex.current = messageIndex.current + 1;
-      } else {
-        setDialogVisibility(false);
-        setMessage('');
-        setSpeaker('');
-        messageIndex.current = -1;
-      }
+    if (!interactable) return msgIndex.current = -1;
+
+    if (!dialogVisibility) {
+      setDialogVisibility(true);
+      setSpeaker(interactable.name);
+    }
+    
+    if (msgIndex.current < interactable.dialog.length - 1) {
+      setMsg(interactable.dialog[msgIndex.current + 1]);
+      msgIndex.current = msgIndex.current + 1;
+    } else {
+      setDialogVisibility(false);
+      setMsg('');
+      setSpeaker('');
+      msgIndex.current = -1;
     }
   }
   
   useKeydown((e) => {
-    if (e.code === "KeyE") handleInteraction();
+    // Interact Button 'E'
+    if (e.code === 'KeyE') handleInteraction();
+    // Arrow Key
     const facing = e.key.replace('Arrow', '').toUpperCase();
     if (!directions.hasOwnProperty(facing)) return;
     e.preventDefault();
-    walk(facing);
+    walk(directions[facing]);
   });
   
   return (
-    <div className="zone-container">
+    <div className='zone-container'>
       <Player
-        position={playerPos}
+        position={playerLocation}
         size={playerSize}
         gesture={gesture}
         dir={dir}
       />
       {
-        Object.entries(npcs).map(([key, {sprite, location, size}]) =>
+        Object.entries(npcs).map(([key, {sprite, location}]) =>
           <Npc
             key={key}
             sprite={sprite.avatar}
