@@ -46,9 +46,12 @@ const findInteractable = (mapName, map, loc, dir, { width, height }) => {
 
   const interactable =  onEntity || inSightEntity;
 
-  const findInfo = (obj) => ({
-    [NPC]: spawn[mapName][`${obj.location.x},${obj.location.y}`]
-  })
+  const findInfo = (obj) => {
+    const target = {
+      [NPC]: spawn[mapName][`${obj.location.x},${obj.location.y}`]
+    }
+    return target[obj.type]
+  }
   return interactable ? findInfo(interactable) : null;
 }
 export default findInteractable;
