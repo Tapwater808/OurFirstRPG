@@ -6,9 +6,12 @@ import {
     SubMenu
 } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
+import './index.css';
 
 export default function Main() {
     return (
+        <div className='container'>
+        <div className='menu'>
         <Menu menuButton={<MenuButton>Menu</MenuButton>}>
             <MenuItem>New Save</MenuItem>
             <SubMenu label="Open">
@@ -19,5 +22,7 @@ export default function Main() {
             </SubMenu>
             <MenuItem>Save</MenuItem>
         </Menu>
+        </div>
+        </div>
     );
 }

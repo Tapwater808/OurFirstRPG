@@ -9,6 +9,8 @@ import '@szhsin/react-menu/dist/index.css';
 
 export default function Inventory() {
     return (
+        <div className='container'>
+        <div className='inventory'>
         <Menu menuButton={<MenuButton>Inventory</MenuButton>}>
             <SubMenu label="Items">
                 <SubMenu label="Apple">
@@ -49,5 +51,7 @@ export default function Inventory() {
                 </SubMenu>
             </SubMenu>
         </Menu>
+        </div>
+        </div>
     );
 }
