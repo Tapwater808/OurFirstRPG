@@ -1,5 +1,6 @@
 import village from './village';
+import house from './house';
 
-const maps = {village};
+const maps = { house, village };
 
 export default maps;
