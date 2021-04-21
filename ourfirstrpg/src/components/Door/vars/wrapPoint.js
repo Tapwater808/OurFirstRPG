@@ -1,10 +1,10 @@
-export const SIZE = {width: 4, height: 2}
+export const SIZE = {width: 8, height: 4}
 
 const house = {
-  '12,22': {
-    location: {x: 12, y: 22},
+  '52,68': {
+    location: {x: 52, y: 68},
     to: 'village',
-    spawnPlayerAt: {x: 12, y: 10}
+    spawnPlayerAt: {x: 12, y: 12}
   }
 }
 
