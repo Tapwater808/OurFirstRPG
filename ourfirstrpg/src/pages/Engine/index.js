@@ -27,7 +27,7 @@ const Engine = () => {
   const [mapName, map, updateMap] = useMap(initMap);
   const npcs = spawn[mapName];
   
-  const [playerLocation, setPlayerLoc] = useState({x: 10, y: 10});
+  const [playerLocation, setPlayerLoc] = useState({x: 12, y: 20});
   const [interactable, setInteractable] = useState(null);
 
   const msgIndex = useRef(-1);
