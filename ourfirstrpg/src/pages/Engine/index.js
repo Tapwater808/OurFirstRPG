@@ -96,8 +96,10 @@ const Engine = () => {
           />
         )
       }
-      <Main menu={menu}/>
-      <Inventory invent={inventory}/>
+      <div className="buttons">
+        <Main menu={menu}/>
+        <Inventory invent={inventory}/>
+      </div>
       <DialogBox
         isVisible={dialogVisibility}
         name={speaker}
