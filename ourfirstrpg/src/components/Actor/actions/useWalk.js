@@ -5,21 +5,22 @@ const useWalk = (update, isObstacle) => {
   const [gesture, setGesture] = useState(0);
   const [dir, setDir] = useState(0);
   
-  const move = (dir) => {
+  const move = (direction) => {
     update(prev => {
       const next = {
-        x: prev.x + movements[dir].x,
-        y: prev.y + movements[dir].y
+        x: prev.x + movements[direction].x,
+        y: prev.y + movements[direction].y
       }
+      console.log('next: ', next);
       const loc = isObstacle(next) ? prev : next;
-      return [dir, loc];
+      return [direction, loc];
     });
   }
-  const walk = (dir) => {
+  const walk = (direction) => {
     setGesture((prev) => prev < 2 ? prev + 1 : 0);
     setDir((prev) => {
-      prev === dir ? move(dir) : update(loc => [dir, loc]);
-      return dir;
+      prev === direction ? move(direction) : update(loc => [direction, loc]);
+      return direction;
     });
   }
   return [gesture, dir, walk]
