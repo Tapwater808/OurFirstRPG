@@ -1,5 +1,5 @@
 import { DOOR } from '../../Map/vars/tileTypes';
-import wrapPoint from '../../Door/vars/wrapPoint';
+import wrapPoint from '../vars/wrapPoint';
 
 const findDoor = (mapName, map, loc) => {
   const tile = map[loc.y][loc.x];
