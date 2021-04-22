@@ -1,10 +1,10 @@
 import { DOWN, LEFT, RIGHT, UP } from '../../Actor/vars/directions';
-import { DOOR, NPC, ITEM } from '../vars/tileTypes';
+import { NPC, ITEM } from '../vars/tileTypes';
 import spawn from '../../Npc/vars/spawn';
 
 const findInteractable = (mapName, map, loc, dir, { width, height }) => {
   const isOnInteractable = (type) => (type === ITEM);
-  const isFacingInteractable = (type) => (type === DOOR) || (type === NPC);
+  const isFacingInteractable = (type) => (type === NPC);
 
   const on = [
     map[loc.y][loc.x],

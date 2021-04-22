@@ -1,16 +1,34 @@
 import spawn from '../../Npc/vars/spawn';
-import { SPACE, NPC } from '../vars/tileTypes';
-
-const createTile = ({type = SPACE, location = {x: 0, y: 0}}) => ({ type, location })
+import wrapPoint, {SIZE as DOORSIZE} from '../../Door/vars/wrapPoint';
+import { NPC, DOOR } from '../vars/tileTypes';
+import { MAP_SIZE_WIDTH, MAP_SIZE_HEIGHT } from '../vars/mapSize';
+const createTile = ({type, location}) => ({ type, location })
 
 const buildMap = (name, mapArray) => {
-  // Build map base on 2D map array
-  const modified = mapArray.map((row, r) =>
-    row.map((col, c) => createTile({
-      type: col, // SPACE, WALL OR DOOR
-      location: {x: c, y: r}
-    }))
+  let modified = new Array(MAP_SIZE_HEIGHT).fill(new Array(MAP_SIZE_WIDTH).fill(null));
+  modified = modified.map((row,r) => 
+    row.map((col,c) => 
+      createTile({
+        type: mapArray[Math.floor(r * .25)][Math.floor(c * .25)],
+        location: { x: c, y: r }
+      })
+    )
   )
+  // Add in Doors
+  const doors = wrapPoint[name];
+  for (const coordinates in doors){
+    const door = doors[coordinates];
+    for (let h = 0; h < DOORSIZE.height; h++) {
+      for (let w = 0; w < DOORSIZE.width; w++) {
+        modified[door.location.y + h][door.location.x + w] = 
+          createTile({
+            type: DOOR,
+            location: door.location,
+          })
+      }
+    }
+  }
+
   // Add in NPC's
   const npcs = spawn[name];
   for (const coordinates in npcs){
@@ -25,7 +43,7 @@ const buildMap = (name, mapArray) => {
           })
       }
     }
-  };
+  }
   return modified;
 }
 export default buildMap;
