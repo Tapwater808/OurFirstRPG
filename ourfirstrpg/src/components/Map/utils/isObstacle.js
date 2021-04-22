@@ -1,5 +1,5 @@
 import {MAP_SIZE_WIDTH, MAP_SIZE_HEIGHT} from '../../Map/vars/mapSize';
-import {SPACE, ITEM} from '../vars/tileTypes';
+import {SPACE, DOOR, ITEM} from '../vars/tileTypes';
 
 const isObstacle = (map, next, {width, height}) => {
     const limit = {
@@ -18,7 +18,7 @@ const isObstacle = (map, next, {width, height}) => {
       map[Math.min(limit.y, next.y + height - 1)][Math.min(limit.x, next.x + width - 1)],
     ]
     const isPassable = corners.reduce((current, corner) =>
-      current && ((corner.type === SPACE) || (corner.type === ITEM)),
+      current && ((corner.type === SPACE) || (corner.type === ITEM) || (corner.type === DOOR)),
       true
     );
     return !isPassable;

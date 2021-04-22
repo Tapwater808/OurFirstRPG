@@ -17,16 +17,17 @@ import spawn from '../../components/Npc/vars/spawn';
 // Util Functions
 import isObstacle from '../../components/Map/utils/isObstacle';
 import findInteractable from '../../components/Map/utils/findInteractable';
+import findDoor from '../../components/Door/utils/findDoor';
 
 const Engine = () => {
   const menu = Main();
   const inventory = Inventory();
 
-  const initMap = 'village';
+  const initMap = 'house';
   const [mapName, map, updateMap] = useMap(initMap);
   const npcs = spawn[mapName];
   
-  const [playerLocation, setPlayerLoc] = useState({x: 10, y: 10});
+  const [playerLocation, setPlayerLoc] = useState({x: 12, y: 20});
   const [interactable, setInteractable] = useState(null);
 
   const msgIndex = useRef(-1);
@@ -38,10 +39,16 @@ const Engine = () => {
 
   const update = (getUpdate) => {
     const [dir, loc] = getUpdate(playerLocation);
-    setPlayerLoc(loc);
-    const found = findInteractable(mapName, map, loc, dir, playerSize);
-    setInteractable(found);
-    // console.log('Found', found);
+    const door = findDoor(mapName, map, loc);
+    if (door) {
+      updateMap(door.to);
+      setPlayerLoc(door.spawnPlayerAt)
+    } else {
+      setPlayerLoc(loc);
+      const found = findInteractable(mapName, map, loc, dir, playerSize);
+      setInteractable(found);
+    //  console.log('Found', found);
+    }
   }
 
   const [gesture, dir, walk] = useWalk(
@@ -56,7 +63,7 @@ const Engine = () => {
       setDialogVisibility(true);
       setSpeaker(interactable.name);
     }
-    
+
     if (msgIndex.current < interactable.dialog.length - 1) {
       setMsg(interactable.dialog[msgIndex.current + 1]);
       msgIndex.current = msgIndex.current + 1;
@@ -87,17 +94,19 @@ const Engine = () => {
         dir={dir}
       />
       {
-        Object.entries(npcs).map(([key, {sprite, location}]) =>
+        npcs ? Object.entries(npcs).map(([key, {sprite, location}]) =>
           <Npc
             key={key}
             sprite={sprite.avatar}
             position={location}
             size={sprite.size}
           />
-        )
+        ) : ''
       }
-      <Main menu={menu}/>
-      <Inventory invent={inventory}/>
+      <div className="buttons">
+        <Main menu={menu}/>
+        <Inventory invent={inventory}/>
+      </div>
       <DialogBox
         isVisible={dialogVisibility}
         name={speaker}
