@@ -1,4 +1,5 @@
 import Actor from '../Actor';
+import directions from '../../Actor/vars/directions';
 
 const Banana= ({position, size, gesture, dir}) => {
   return (
@@ -7,7 +8,7 @@ const Banana= ({position, size, gesture, dir}) => {
       position={position}
       size={size}
       step={gesture}
-      dir={dir}
+      dir={directions.DOWN}
     />
   );
 }
