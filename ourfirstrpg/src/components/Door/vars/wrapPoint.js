@@ -3,7 +3,7 @@ export const SIZE = {width: 8, height: 4}
 const house = {
   '52,68': {
     location: {x: 52, y: 68},
-    to: 'village',
+    to: 'world',
     spawnPlayerAt: {x: 12, y: 12}
   }
 }

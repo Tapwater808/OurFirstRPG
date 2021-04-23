@@ -24,7 +24,7 @@ const Engine = () => {
   const inventory = Inventory();
 
   const initMap = 'house';
-  const [mapName, map, updateMap] = useMap(initMap);
+  const [mapName, map, updateMap, mapImg] = useMap(initMap);
   const npcs = spawn[mapName];
   
   const [playerLocation, setPlayerLoc] = useState({x: 12, y: 20});
@@ -42,7 +42,7 @@ const Engine = () => {
     const door = findDoor(mapName, map, loc);
     if (door) {
       updateMap(door.to);
-      setPlayerLoc(door.spawnPlayerAt)
+      setPlayerLoc(door.spawnPlayerAt);
     } else {
       setPlayerLoc(loc);
       const found = findInteractable(mapName, map, loc, dir, playerSize);
@@ -86,7 +86,9 @@ const Engine = () => {
   });
   
   return (
-    <div className='zone-container'>
+    <div className='zone-container'
+      style={{backgroundImage: `url(${mapImg})`}}
+    >
       <Player
         position={playerLocation}
         size={playerSize}
