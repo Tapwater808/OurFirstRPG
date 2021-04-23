@@ -6,6 +6,7 @@ import {
     SubMenu
 } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
+import './index.css';
 
 export default function Inventory() {
     return (
