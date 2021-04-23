@@ -1,9 +1,9 @@
 import Actor from '../Actor';
 
-const Player = ({position, size, gesture, dir}) => {
+const Apple = ({position, size, gesture, dir}) => {
   return (
     <Actor
-      image='url(./Assets/Player.png)'
+      image='url(./Assets/Apple.jpg)'
       position={position}
       size={size}
       step={gesture}
@@ -11,4 +11,4 @@ const Player = ({position, size, gesture, dir}) => {
     />
   );
 }
-export default Player;
+export default Apple;
