@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './index.css'
+import './login.css'
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -12,6 +12,7 @@ const Login = () => {
 
   return (
     <>
+    <div className='body' style={{backgroundColor: 'rgb(44, 44, 44)'}}>
       <h1>Our First RPG</h1>
       <div className="formContainer">
         <form action="/action.php">
@@ -27,6 +28,7 @@ const Login = () => {
           <input type="password" id="password" value={password}/><br /><br />
           <button className='submitButton'>Login</button>
         </form>
+      </div>
       </div>
     </>
   )

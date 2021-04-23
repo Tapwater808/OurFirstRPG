@@ -16,6 +16,7 @@ body {
     background-image: url(../../components/Map/images/PlayerHouseResize.jpeg);
     background-repeat: no-repeat;
     background-position: 0px 0px;
+    background-color: transparent;
   }
 /* 
   .view-container {
@@ -29,4 +30,5 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
   }
