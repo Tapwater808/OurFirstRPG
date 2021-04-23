@@ -1,4 +1,5 @@
 import Actor from '../Actor';
+import directions from '../../Actor/vars/directions';
 
 const Item = ({ sprite, position, size }) => {
   return (
@@ -7,6 +8,7 @@ const Item = ({ sprite, position, size }) => {
       position={position}
       size={size}
       step={0}
+      dir={directions.DOWN}
     />
   );
 }
