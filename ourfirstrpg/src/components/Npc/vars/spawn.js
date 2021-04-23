@@ -1,6 +1,6 @@
 import sprite from '../../Sprite/vars/config';
 
-const village = {
+const world = {
   '12,16': {
     location: {x: 12, y: 16},
     name: 'Wife',
@@ -13,6 +13,6 @@ const village = {
   }
 }
 
-const spawn = {village}
+const spawn = {world}
 
 export default spawn;
