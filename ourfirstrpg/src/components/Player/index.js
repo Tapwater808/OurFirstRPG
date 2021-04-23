@@ -1,4 +1,3 @@
-
 import Actor from '../Actor';
 
 const Player = ({position, size, gesture, dir}) => {
