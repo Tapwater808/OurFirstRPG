@@ -14,6 +14,7 @@ const Login = () => {
 
   return (
     <>
+    <div className='body' style={{backgroundColor: 'rgb(44, 44, 44)'}}>
       <h1>Our First RPG</h1>
       <div className='formContainer'>
         <form action='/action.php'>
@@ -35,6 +36,7 @@ const Login = () => {
           <br /><br />
           <button className='submitButton' onClick={handleSubmitForm}>Login</button>
         </form>
+      </div>
       </div>
     </>
   )
