@@ -12,3 +12,9 @@ const Banana= ({position, size, gesture, dir}) => {
   );
 }
 export default Banana;
+
+export const NAME = 'Banana'
+
+export const MESSAGES = [
+  'Yum, a Banana!'
+];

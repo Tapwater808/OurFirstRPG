@@ -12,3 +12,9 @@ const Apple = ({position, size, gesture, dir}) => {
   );
 }
 export default Apple;
+
+export const NAME = 'Apple'
+
+export const MESSAGES = [
+  'Yum, an apple!'
+];
