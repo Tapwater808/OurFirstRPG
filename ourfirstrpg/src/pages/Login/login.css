@@ -1,8 +1,13 @@
 * {
-    background-color: rgb(44, 44, 44);
     margin: 0;
     /* rgb(34,193,195); */
     /* rgba(131,58,180,1) */
+}
+
+.body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 h1 {

@@ -1,5 +1,5 @@
 // CSS Stylesheet
-import './index.css';
+import './engine.css';
 // Components
 import Player from '../../components/Player';
 import Main from '../../components/Menu';
