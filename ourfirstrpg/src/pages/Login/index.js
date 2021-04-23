@@ -4,9 +4,23 @@ import './login.css'
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const handleSubmitForm = () => {
 
-  }
+  const handleSubmitForm = e => {
+    e.preventDefault();
+    console.log("username is " + username);
+    console.log("password is " + password);
+
+    const data = {
+      username: username,
+      password: password
+    }
+    fetch("/login", {
+      method: "POST", 
+      body: JSON.stringify(data)
+    }).then(res => {
+      console.log("Request complete! response:", res);
+    });
+  };
 
   const handleUsernameChange = (e) => {setUsername(e.target.value)}
 
