@@ -1,4 +1,5 @@
 import spawn from '../../Npc/vars/spawn';
+import itemSpawn from '../../Items/vars/spawn';
 import wrapPoint, {SIZE as DOORSIZE} from '../../Door/vars/wrapPoint';
 import { NPC, DOOR, ITEM } from '../vars/tileTypes';
 import { MAP_SIZE_WIDTH, MAP_SIZE_HEIGHT } from '../vars/mapSize';
@@ -46,7 +47,7 @@ const buildMap = (name, mapArray) => {
   }
 
     // Add in Items
-    const items = spawn[name];
+    const items = itemSpawn[name];
     for (const coordinates in items){
       const item = items[coordinates];
       const {width, height} = item.sprite.size;
