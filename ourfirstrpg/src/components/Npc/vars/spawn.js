@@ -6,9 +6,9 @@ const world = {
     name: 'Wife',
     sprite: sprite.BadGuy1,
     dialog: [
-      'This is a new test',
-      'I am your wife',
-      'Make me a sandwich, please :)'
+      'Hello, honey, I am back from work!',
+      'I am awfully hungry, would you be a dear and make me a ham and cheese sandwich?',
+      'The ingredients should be in various places around the house.'
     ]
   }
 }
