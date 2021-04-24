@@ -19,4 +19,10 @@ router.route('/')
   })
   .get((req, res, next) => next());
 
+router.post('/signup', async (req, res) => {
+  const signUpObj = await db.User.create(req.body);
+  console.log(req.body);
+  res.json(signUpObj);
+});
+
 module.exports = router;

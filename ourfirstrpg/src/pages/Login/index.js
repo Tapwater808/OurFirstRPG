@@ -98,7 +98,7 @@ const Login = () => {
             <br /><br />
             <label for='passwordSignUp'>Password:</label><br />
             <input
-              type='passwordSignUp'
+              type='password'
               id='passwordSignUp'
               value={passwordSignUp}
               onChange={handleSignUpPasswordChange}
