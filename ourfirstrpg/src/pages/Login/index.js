@@ -25,6 +25,7 @@ const Login = () => {
     }).then(res => {
       console.log("Request complete! response:", res);
     });
+    window.location.replace('/')
   };
 
   const handleSignUpSubmitForm = e => {
@@ -46,6 +47,7 @@ const Login = () => {
       console.log("Request complete! response:", res);
       console.log(data)
     });
+    window.location.replace('/')
   };
 
   const handleUsernameChange = (e) => {setUsername(e.target.value)}
