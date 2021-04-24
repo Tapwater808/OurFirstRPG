@@ -14,7 +14,14 @@ h1 {
     color: white;
     font-size: 50px;
     text-align: center;
-    margin-top: 15px;
+    background-color: rgb(34,193,195);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+form {
+    margin-top: 70px;
 }
 
 .formContainer {

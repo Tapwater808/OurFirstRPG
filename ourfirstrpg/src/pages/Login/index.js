@@ -68,6 +68,7 @@ const Login = () => {
             <label for='username'>Username:</label><br />
             <input
               type='text'
+              placeholder='Username...'
               id='username'
               value={username}
               onChange={handleUsernameChange}
@@ -76,6 +77,7 @@ const Login = () => {
             <label for='password'>Password:</label><br />
             <input
               type='password'
+              placeholder='Password...'
               id='password'
               value={password}
               onChange={handlePasswordChange}
@@ -92,6 +94,7 @@ const Login = () => {
             <label for='username'>Username:</label><br />
             <input
               type='text'
+              placeholder='Username...'
               id='usernameSignUp'
               value={usernameSignUp}
               onChange={handleSignUpUsernameChange}
@@ -100,6 +103,7 @@ const Login = () => {
             <label for='passwordSignUp'>Password:</label><br />
             <input
               type='password'
+              placeholder='Password...'
               id='passwordSignUp'
               value={passwordSignUp}
               onChange={handleSignUpPasswordChange}
