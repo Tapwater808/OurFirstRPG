@@ -1,10 +1,10 @@
 import Apple from '../../../Items/food/apple/apple';
 import Banana from '../../../Items/food/banana/banana';
 
-var worldStuff = [
+const worldObjects = [
     Apple= new Item ("apple", 0),
     Banana = new Item ("banana", 3),
 ];
 
-Apple.description = "Your father's pouch, made of Spanish leather.";
-Banana.description = "A half-eaten piece of liquorice.";
+Apple.description = "A naturally sweet fruit, may be poisonous depending on source.";
+Banana.description = "A delicious fruit that has been heavily modified by man";
