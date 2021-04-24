@@ -44,6 +44,7 @@ const Login = () => {
       },
     }).then(res => {
       console.log("Request complete! response:", res);
+      console.log(data)
     });
   };
 
