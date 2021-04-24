@@ -22,10 +22,19 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(res => {
-      console.log("Request complete! response:", res);
-    });
-    window.location.replace('/')
+    }).then(function(response)
+    {
+     if(response.status!==200)
+      {
+         throw new Error(response.status)
+      } else {
+        window.location.replace('/')
+      }
+    })
+   .catch(function(error)
+   {
+     alert('Incorrect username or password')
+   });
   };
 
   const handleSignUpSubmitForm = e => {
