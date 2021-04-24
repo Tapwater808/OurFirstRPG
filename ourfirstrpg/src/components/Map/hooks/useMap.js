@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react';
+import {useState, useRef, useMemo} from 'react';
 import maps from '../vars/maps';
 import buildMap from '../utils/buildMap';
 //Map Images
@@ -12,7 +12,7 @@ const images = {
 
 const useMap = (mapName) => {
   const name = useRef(mapName);
-  const [map, setMap] = useState(buildMap(mapName, maps[mapName]));
+  const [map, setMap] = useMemo(()=> buildMap(mapName, maps[mapName]), [mapName]);
   const [currentMapImage, setMapImg] = useState(images[mapName]);
 
   const updateMap = (mName) => {
