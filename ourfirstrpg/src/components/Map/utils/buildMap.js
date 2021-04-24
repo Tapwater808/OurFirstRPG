@@ -1,6 +1,7 @@
 import spawn from '../../Npc/vars/spawn';
+import itemSpawn from '../../Items/vars/spawn';
 import wrapPoint, {SIZE as DOORSIZE} from '../../Door/vars/wrapPoint';
-import { NPC, DOOR } from '../vars/tileTypes';
+import { NPC, DOOR, ITEM } from '../vars/tileTypes';
 import { MAP_SIZE_WIDTH, MAP_SIZE_HEIGHT } from '../vars/mapSize';
 const createTile = ({type, location}) => ({ type, location })
 
@@ -44,6 +45,23 @@ const buildMap = (name, mapArray) => {
       }
     }
   }
+
+    // Add in Items
+    const items = itemSpawn[name];
+    for (const coordinates in items){
+      const item = items[coordinates];
+      const {width, height} = item.sprite.size;
+      for (let h = 0; h < height; h++) {
+        for (let w = 0; w < width; w++) {
+          modified[item.location.y + h][item.location.x + w] = 
+            createTile({
+              type: ITEM,
+              location: item.location
+            })
+        }
+      }
+    }
+
   return modified;
 }
 export default buildMap;
