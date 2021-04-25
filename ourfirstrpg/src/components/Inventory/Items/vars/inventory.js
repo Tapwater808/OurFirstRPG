@@ -2,7 +2,7 @@ import worldObjects from './objects'
 
 const inventory = [];
 
-for (let i of worldObject) {
+for (let i of worldObjects) {
     if (i.state === 3) {
         inventory.push(i.name);
     }
