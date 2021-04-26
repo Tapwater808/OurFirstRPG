@@ -12,12 +12,15 @@ router.post('/getSaveFiles', authenticateToken, (req, res)=> {
 })
 
 router.post('/signup', async (req, res) => {
-  const signUpObj = await db.User.create(req.body);
-  console.log(req.body);
-  res.json(signUpObj);
+  const signUpObj = await db.User.findOne({ username: req.params.username })
+  if (!signUpObj) {
+    const newSignUpObj = await db.User.create(req.body);
+    console.log(req.body);
+    res.json(newSignUpObj);
+  }
+    res.status(403).end();
 });
 
 router.use((req, res) => res.sendFile(path.join(__dirname, "../ourfistrpg/build/index.html")));
 
 module.exports = router;
-  
