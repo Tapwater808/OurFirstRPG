@@ -25,7 +25,7 @@ let signUpObj = '';
 
 router.post('/signup', async (req, res) => {
     try {
-      signUpObj = await db.User.findOne({ username: req.params.username })
+      signUpObj = await db.User.findOne({ username: req.body.username })
     }
     catch(err) {
       console.log(err);
