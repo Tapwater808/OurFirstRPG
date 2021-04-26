@@ -7,6 +7,8 @@ const Login = () => {
   const [usernameSignUp, setUsernameSignUp] = useState('');
   const [passwordSignUp, setPasswordSignUp] = useState('');
 
+  const [state1, setState1] = useState('0');
+
   const handleSubmitForm = e => {
     e.preventDefault();
     console.log("username is " + username);
@@ -52,11 +54,22 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(res => {
-      console.log("Request complete! response:", res);
-      console.log(data)
-    });
-    window.location.replace('/')
+    }).then(function(response)
+    {
+      console.log('', response)
+     if(response.status!==200)
+      {
+        setState1(state1 + 1)
+        alert('Username already exists, please choose a new username')
+        throw new Error(response.status)
+      } else {
+        window.location.replace('/')
+      }
+    })
+   .catch(function(error)
+   {
+    //  alert('Username already exists, please choose a new username')
+   });
   };
 
   const handleUsernameChange = (e) => {setUsername(e.target.value)}
