@@ -1,11 +1,10 @@
-import worldObjects from './objects'
-
-const inventory = [];
-
-for (let i of worldObjects) {
-    if (i.state === 3) {
-        inventory.push(i.name);
-    }
+const inventory = {
+  'Apple': {
+    description: 'Apple',
+  },
+  'Banana': {
+    description: 'Banana',
+  }
 };
 
-console.log(inventory);
+export default inventory;
