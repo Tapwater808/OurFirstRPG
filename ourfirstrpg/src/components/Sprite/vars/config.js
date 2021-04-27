@@ -10,6 +10,10 @@ const config = {
   Banana: {
     avatar: 'Banana',
     size: {width: 4, height: 4}
+  },
+  Spooder: {
+    avatar: 'Spooder',
+    size: {width: 4, height: 4}
   }
 }
 

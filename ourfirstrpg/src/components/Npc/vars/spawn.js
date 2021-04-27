@@ -7,8 +7,18 @@ const world = {
     sprite: sprite.BadGuy1,
     dialog: [
       'Hello, honey, I am back from work!',
-      'I am awfully hungry, would you be a dear and make me a ham and cheese sandwich?',
-      'The ingredients should be in various places around the house.'
+      'I am awfully hungry, would you be a dear and run to the store to pick up some fruit?',
+      'Any kind is fine. '
+    ]
+  },
+  '16,16': {
+    location: {x: 16, y: 16},
+    name: 'Doggo',
+    sprite: sprite.Spooder,
+    dialog: [
+      'Woof',
+      'Pretend I am a dog, please.',
+      'Woof woof'
     ]
   }
 }
