@@ -20,6 +20,17 @@ const world = {
       'Pretend I am a dog, please.',
       'Woof woof'
     ]
+  },
+  '20,16': {
+    location: {x: 20, y: 16},
+    name: 'Employee',
+    sprite: sprite.Girl1,
+    dialog: [
+      'Hello! Welcome to the Store!',
+      'What\'s that? You want to buy some fruit?',
+      'We don\'t sell fruit here. If you find any on the floor, you can just take it.',
+      'Maybe just don\'t tell my manager about it, though.'
+    ]
   }
 }
 
