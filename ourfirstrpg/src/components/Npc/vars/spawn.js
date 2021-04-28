@@ -31,6 +31,22 @@ const world = {
       'We don\'t sell fruit here. If you find any on the floor, you can just take it.',
       'Maybe just don\'t tell my manager about it, though.'
     ]
+  },
+  '24,16': {
+    location: {x: 24, y: 16},
+    name: 'Banan',
+    sprite: sprite.Banan,
+    dialog: [
+      'I am Banan'
+    ]
+  },
+  '28,16': {
+    location: {x: 28, y: 16},
+    name: 'Apple',
+    sprite: sprite.Appl3,
+    dialog: [
+      'Appley juice'
+    ]
   }
 }
 
