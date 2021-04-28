@@ -1,15 +1,27 @@
 * {
-    background-color: rgb(44, 44, 44);
     margin: 0;
     /* rgb(34,193,195); */
     /* rgba(131,58,180,1) */
+}
+
+.body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 h1 {
     color: white;
     font-size: 50px;
     text-align: center;
-    margin-top: 15px;
+    background-color: rgb(34,193,195);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+form {
+    margin-top: 70px;
 }
 
 .formContainer {
@@ -17,6 +29,14 @@ h1 {
     justify-content: center;
     align-items: center;
     padding-top: 70px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.forms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 form input {
@@ -31,6 +51,10 @@ form input {
 form label {
     color: white;
     font-size: 25px;
+}
+
+h2 {
+    color: white;
 }
 
 .submitButton {

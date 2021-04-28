@@ -2,6 +2,22 @@ const config = {
   BadGuy1: {
     avatar: 'BadGuy1',
     size: {width: 4, height: 4}
+  },
+  Apple: {
+    avatar: 'Apple',
+    size: {width: 4, height: 4}
+  },
+  Banana: {
+    avatar: 'Banana',
+    size: {width: 4, height: 4}
+  },
+  Spooder: {
+    avatar: 'Spooder',
+    size: {width: 4, height: 4}
+  },
+  Girl1: {
+    avatar: 'Girl1',
+    size: {width: 4, height: 4}
   }
 }
 
