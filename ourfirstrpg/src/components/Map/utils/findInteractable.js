@@ -12,30 +12,30 @@ const findInteractable = (mapName, map, loc, dir, { width, height }) => {
       on.push(map[loc.y + h][loc.x + w])
 
   const inSight = {
-    [DOWN]: [
+    [DOWN]: map[loc.y + height] ? [
       map[loc.y + height][loc.x],
       map[loc.y + height][loc.x + 1],
       map[loc.y + height][loc.x + 2],
       map[loc.y + height][loc.x + 3],
-    ],
+    ] : new Array(4).fill(undefined),
     [LEFT]: [
-      map[loc.y][loc.x - 1],
-      map[loc.y + 1][loc.x - 1],
-      map[loc.y + 2][loc.x - 1],
-      map[loc.y + 3][loc.x - 1],
+      map[loc.y][loc.x - 1] || undefined,
+      map[loc.y + 1][loc.x - 1] || undefined,
+      map[loc.y + 2][loc.x - 1] || undefined,
+      map[loc.y + 3][loc.x - 1] || undefined,
     ],
     [RIGHT]: [
-      map[loc.y][loc.x + width],
-      map[loc.y + 1][loc.x + width],
-      map[loc.y + 2][loc.x + width],
-      map[loc.y + 3][loc.x + width],
+      map[loc.y][loc.x + width] || undefined,
+      map[loc.y + 1][loc.x + width] || undefined,
+      map[loc.y + 2][loc.x + width] || undefined,
+      map[loc.y + 3][loc.x + width] || undefined,
     ],
-    [UP]: [
+    [UP]: map[loc.y - 1] ? [
       map[loc.y - 1][loc.x],
       map[loc.y - 1][loc.x + 1],
       map[loc.y - 1][loc.x + 2],
       map[loc.y - 1][loc.x + 3],
-    ]
+    ] : new Array(4).fill(undefined)
   }
   
   const onEntity = on.find(tile => isOnInteractable(tile.type));
