@@ -12,12 +12,12 @@ const findInteractable = (mapName, map, loc, dir, { width, height }) => {
       on.push(map[loc.y + h][loc.x + w])
 
   const inSight = {
-    [DOWN]: [
+    [DOWN]: map[loc.y + height] ? [
       map[loc.y + height][loc.x],
       map[loc.y + height][loc.x + 1],
       map[loc.y + height][loc.x + 2],
       map[loc.y + height][loc.x + 3],
-    ],
+    ] : new Array(4).fill({type: OUT_OF_BOUND}),
     [LEFT]: [
       map[loc.y][loc.x - 1],
       map[loc.y + 1][loc.x - 1],
@@ -30,12 +30,12 @@ const findInteractable = (mapName, map, loc, dir, { width, height }) => {
       map[loc.y + 2][loc.x + width],
       map[loc.y + 3][loc.x + width],
     ],
-    [UP]: [
+    [UP]: map[loc.y - 1] ? [
       map[loc.y - 1][loc.x],
       map[loc.y - 1][loc.x + 1],
       map[loc.y - 1][loc.x + 2],
       map[loc.y - 1][loc.x + 3],
-    ]
+    ] : new Array(4).fill({type: OUT_OF_BOUND})
   }
   
   const onEntity = on.find(tile => isOnInteractable(tile.type));
