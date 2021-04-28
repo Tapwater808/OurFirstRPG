@@ -7,27 +7,21 @@ import {
 } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import './index.css';
-/* Parent:
-    const items = ['Apple', 'Banana'];
 
-    <Inventory items = {items} />
+const items = ['Apple', 'Banana'];
 
-    ...
-    ...
-    ...
+<Inventory items = {items} />
     Inventory = (props) => { // props is {items: items}
 
-        reutrn (
+        return (
             <Menu>
-                props.items.map(it => {
+                props.items.map({
 
                 })
             </Menu>
         )
     }
-    
-    
- */
+
 export default function Inventory() {
     return (
         <div className='container'>
