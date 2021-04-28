@@ -1,12 +1,16 @@
 import maps from '../vars/maps';
-import buildMap from '../utils/buildMap';
+import buildMap from './buildMap';
 //Map Images
 import houseImage from '../images/PlayerHouseResize.jpeg';
 import worldImage from '../images/ProjectWorldResize.jpeg';
+import dungeonImage from '../images/ProjectDungeonResize.jpeg';
+import storeImage from '../images/ProjectStoreResize.jpeg';
 
 const images = {
     'house': houseImage,
-    'world': worldImage
+    'world': worldImage,
+    'dungeon': dungeonImage,
+    'store': storeImage,
 }
 
 const getMap = (mapName) => {

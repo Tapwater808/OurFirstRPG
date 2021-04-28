@@ -10,7 +10,7 @@ import Npc from '../../components/Npc';
 import {useRef, useState, useMemo} from 'react';
 import useKeydown from '../../hooks/useKeydown';
 import useWalk from '../../components/Actor/actions/useWalk';
-import getMap from '../../components/Map/hooks/getMap';
+import getMap from '../../components/Map/utils/getMap';
 // Variables
 import directions from '../../components/Actor/vars/directions';
 import spawn from '../../components/Npc/vars/spawn';
