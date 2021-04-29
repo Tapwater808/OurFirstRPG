@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("ourfirstrpg/build"));
 }
 app.use(routes);
 
