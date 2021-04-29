@@ -9,9 +9,9 @@ function App() {
     <Router>
     <div>
       <Switch>
-        <Route exact path='/' component={Login} />
+        <Route exact path='/' component={Engine} />
         <Route exact path='/authTest' component={AuthTest} />
-        <Route exact path='/engine' component={Engine} />
+        <Route exact path='/login' component={Login} />
       </Switch>
     </div>
   </Router>

@@ -10,9 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("ourfirstrpg/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("ourfirstrpg/build"));
+// }
+app.use(express.static("ourfirstrpg/build"));
 app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ourfirstrpg");
