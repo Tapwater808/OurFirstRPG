@@ -8,6 +8,11 @@ import {
 import '@szhsin/react-menu/dist/index.css';
 import './index.css';
 
+// import Apple from '../Items/food/apple/apple';
+// import Banana from '../Items/food/banana/banana';
+
+// const items = [{Apple , Banana }];
+
 export default function Inventory() {
     return (
         <div className='container'>
@@ -15,21 +20,16 @@ export default function Inventory() {
         <Menu menuButton={<MenuButton>Inventory</MenuButton>}>
             <SubMenu label="Items">
                 <SubMenu label="Apple">
-                    <MenuItem>A naturally sweet fruit, may be poisonous depending on source.</MenuItem>
+                    <MenuItem>A naturally sweet fruit that, for some reason, 
+                    is smiling right back at you.</MenuItem>
                     <MenuItem>+10 hp</MenuItem>
                     <MenuItem>10% chance of poison effect</MenuItem>
                 </SubMenu>
-                <SubMenu label="Bannana">
-                    <MenuItem>A delicious fruit that has been heavily modified by man</MenuItem>
+                <SubMenu label="Banan">
+                    <MenuItem>You have a slight suspicion that the banana is 
+                    mutated - I mean, how else would it have a face?</MenuItem>
                     <MenuItem>+25 hp</MenuItem>
                     <MenuItem>+5 def</MenuItem>
-                </SubMenu>
-                <SubMenu label="Steak">
-                    <MenuItem>A hearty chunk of meat for when your hunger cannot be satied
-                    except with the flesh of another</MenuItem>
-                    <MenuItem>+100 hp</MenuItem>
-                    <MenuItem>+25 def</MenuItem>
-                    <MenuItem>-15 spd</MenuItem>
                 </SubMenu>
             </SubMenu>
             <SubMenu label="Weapons">
