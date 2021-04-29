@@ -67,8 +67,8 @@ const store = {
       'Appley juice'
     ]
   },
-  '80,16': {
-    location: {x: 80, y: 16},
+  '80,24': {
+    location: {x: 80, y: 24},
     name: 'Employee',
     sprite: sprite.Girl1,
     dialog: [
