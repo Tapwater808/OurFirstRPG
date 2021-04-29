@@ -7,10 +7,10 @@ import Inventory from '../../components/Inventory';
 import DialogBox from '../../components/DialogBox/DialogBox';
 import Npc from '../../components/Npc';
 // Hooks
-import {useRef, useState} from 'react';
+import {useRef, useState, useMemo} from 'react';
 import useKeydown from '../../hooks/useKeydown';
 import useWalk from '../../components/Actor/actions/useWalk';
-import useMap from '../../components/Map/hooks/useMap';
+import getMap from '../../components/Map/utils/getMap';
 // Variables
 import directions from '../../components/Actor/vars/directions';
 import spawn from '../../components/Npc/vars/spawn';
@@ -23,8 +23,8 @@ const Engine = () => {
   const menu = Main();
   const inventory = Inventory();
 
-  const initMap = 'house';
-  const [mapName, map, updateMap, mapImg] = useMap(initMap);
+  const [mapName, setMapName] = useState('house');
+  const [map, mapImg] = useMemo(() => getMap(mapName), [mapName]);
   const npcs = spawn[mapName];
   
   const [playerLocation, setPlayerLoc] = useState({x: 12, y: 20});
@@ -41,7 +41,7 @@ const Engine = () => {
     const [dir, loc] = getUpdate(playerLocation);
     const door = findDoor(mapName, map, loc);
     if (door) {
-      updateMap(door.to);
+      setMapName(door.to);
       setPlayerLoc(door.spawnPlayerAt);
     } else {
       setPlayerLoc(loc);

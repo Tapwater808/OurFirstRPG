@@ -7,6 +7,8 @@ const Login = () => {
   const [usernameSignUp, setUsernameSignUp] = useState('');
   const [passwordSignUp, setPasswordSignUp] = useState('');
 
+  const [state1, setState1] = useState('0');
+
   const handleSubmitForm = e => {
     e.preventDefault();
     console.log("username is " + username);
@@ -22,9 +24,19 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(res => {
-      console.log("Request complete! response:", res);
-    });
+    }).then(function(response)
+    {
+     if(response.status!==200)
+      {
+         throw new Error(response.status)
+      } else {
+        window.location.replace('/')
+      }
+    })
+   .catch(function(error)
+   {
+     alert('Incorrect username or password')
+   });
   };
 
   const handleSignUpSubmitForm = e => {
@@ -42,9 +54,22 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(res => {
-      console.log("Request complete! response:", res);
-    });
+    }).then(function(response)
+    {
+      console.log('', response)
+     if(response.status!==200)
+      {
+        setState1(state1 + 1)
+        alert('Username already exists, please choose a new username')
+        throw new Error(response.status)
+      } else {
+        window.location.replace('/')
+      }
+    })
+   .catch(function(error)
+   {
+    //  alert('Username already exists, please choose a new username')
+   });
   };
 
   const handleUsernameChange = (e) => {setUsername(e.target.value)}
@@ -67,6 +92,7 @@ const Login = () => {
             <label for='username'>Username:</label><br />
             <input
               type='text'
+              placeholder='Username...'
               id='username'
               value={username}
               onChange={handleUsernameChange}
@@ -75,6 +101,7 @@ const Login = () => {
             <label for='password'>Password:</label><br />
             <input
               type='password'
+              placeholder='Password...'
               id='password'
               value={password}
               onChange={handlePasswordChange}
@@ -91,6 +118,7 @@ const Login = () => {
             <label for='username'>Username:</label><br />
             <input
               type='text'
+              placeholder='Username...'
               id='usernameSignUp'
               value={usernameSignUp}
               onChange={handleSignUpUsernameChange}
@@ -98,7 +126,8 @@ const Login = () => {
             <br /><br />
             <label for='passwordSignUp'>Password:</label><br />
             <input
-              type='passwordSignUp'
+              type='password'
+              placeholder='Password...'
               id='passwordSignUp'
               value={passwordSignUp}
               onChange={handleSignUpPasswordChange}
