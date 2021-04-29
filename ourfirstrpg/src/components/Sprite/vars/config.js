@@ -18,6 +18,14 @@ const config = {
   Girl1: {
     avatar: 'Girl1',
     size: {width: 4, height: 4}
+  },
+  BatLady: {
+    avatar: 'BatLady',
+    size: {width: 4, height: 4}
+  },
+  Boy2: {
+    avatar: 'Boy2',
+    size: {width: 4, height: 4}
   }
 }
 
