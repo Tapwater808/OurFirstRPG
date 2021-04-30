@@ -10,7 +10,6 @@
 - [Next Steps](#next-steps)
 - [How to Contribute](#how-to-contribute)
 - [Authors](#authors)
-- [Acknowledgements](#acknowledgements)
 
 ### Description of Project
 
@@ -66,7 +65,3 @@
 - Alex Fok (https://github.com/alex-fok)
 - Ky Taylor (https://github.com/kytaylor)
 - Eric Jostad https://github.com/EJostad
-
-
-### Acknowledgements
-- TBD
