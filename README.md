@@ -7,7 +7,6 @@
 - [Page Images](#page-images)
 - [Links](#links) 
 - [Next Steps](#next-steps)
-- [How to Contribute](#how-to-contribute)
 - [Authors](#authors)
 
 ### Description of Project
@@ -52,7 +51,18 @@
 
 ### Next Steps
 
-- Coming soon...
+- Working File Save and Load system using a database such as mongodb
+- Implement a pick up and drop mechanic for items
+- Implement a working inventory system
+- Enemy NPC and combat system integration 
+- Script basic AI pathing and movements
+- Expand Questlines
+- Additional maps to explore
+- Add sound effects 
+- Add music that plays in background for each map
+
+
+
 
 
 ### Authors
