@@ -6,7 +6,6 @@
 - [Technologies Used](#technologies)
 - [Page Images](#page-images)
 - [Links](#links) 
-- [Known Bugs](#known-bugs)
 - [Next Steps](#next-steps)
 - [How to Contribute](#how-to-contribute)
 - [Authors](#authors)
@@ -50,10 +49,6 @@
 - Github: https://github.com/Tapwater808/OurFirstRPG
 - Heroku: https://sleepy-plateau-82899.herokuapp.com/
 
-
-### Known Bugs
-
-- Hopefully NOT coming soon...
 
 ### Next Steps
 
