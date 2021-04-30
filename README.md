@@ -19,11 +19,12 @@
 
 ### Technologies
 
+- [ReactJs](https://reactjs.org/)
+- [MongoDB](https://www.mongodb.com/) 
 - [HTML](https://html.com/)
 - [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 - [Javascript](https://www.javascript.com/)
-- [Node](https://nodejs.org/en/)
-- [Express](https://expressjs.com/)
+- [NPM](https://www.npmjs.com/)
 - [Eslint](https://eslint.org/)
 
 
