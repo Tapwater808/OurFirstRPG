@@ -1,5 +1,6 @@
 # OurFirstRPG
 
+
 ## Table of Contents
 
 - [Description of Project](#description-of-Project)
@@ -11,7 +12,11 @@
 
 ### Description of Project
 
-- Coming soon...
+- Using ReactJs as the framework, this is a simple Role-Playing-Game to demonstrate the capabilities of the technology in the hands of capable developers. After
+initial sign up and log in, the player has an initial quest that begins with the players partner requesting that they make them a sandwhich. Simple, right? The player 
+will be able to freeky move between four main maps at this stage but down the line will have the simple request of a sandwhich turn into a branching story. Down the road, 
+the player will be able to access an inventory system as well as a save mechanic, using Mongodb as the technology which will allow the player to save their progress and 
+return at a later time. 
   
 
 ### Technologies
@@ -60,9 +65,6 @@
 - Additional maps to explore
 - Add sound effects 
 - Add music that plays in background for each map
-
-
-
 
 
 ### Authors
