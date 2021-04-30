@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const loginRoute = require('./login');
-const path = require("path");
 const authenticateToken = require('../auth/middleware/authenticateToken');
 
 const db = require('../models');
@@ -40,7 +39,5 @@ router.post('/signup', async (req, res) => {
         res.status(403).end();
     }
 });
-
-router.use((req, res) => res.sendFile(path.join(__dirname, "../ourfistrpg/build/index.html")));
 
 module.exports = router;

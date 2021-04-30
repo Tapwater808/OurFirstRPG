@@ -30,7 +30,7 @@ const Login = () => {
       {
          throw new Error(response.status)
       } else {
-        window.location.replace('/engine')
+        window.location.replace('/')
       }
     })
    .catch(function(error)
@@ -63,7 +63,7 @@ const Login = () => {
         alert('Username already exists, please choose a new username')
         throw new Error(response.status)
       } else {
-        window.location.replace('/engine')
+        window.location.replace('/')
       }
     })
    .catch(function(error)
